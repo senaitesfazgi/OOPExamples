@@ -8,12 +8,19 @@ namespace OOPExamples
 {
     class Desktop : Computer, ISleep
     {
+        private ISleep sleepController;
         public enum CaseType { 
             Tower,
             MiniTower
         }
 
-        public bool isSleeping { get; private set; }
+        public bool isSleeping 
+        {
+            get
+            {
+                return sleepController.isSleeping;
+            }
+        }
         public CaseType caseType {get; private set;}
         public override string name 
         {
@@ -26,6 +33,7 @@ namespace OOPExamples
         public Desktop(string name, CaseType caseType) : base(name)
         {
             this.caseType = caseType;
+            sleepController = new SleepController();
         }
 
         public void ToggleSleep()
@@ -34,7 +42,7 @@ namespace OOPExamples
             {
                 return;
             }
-            isSleeping = !isSleeping;
+            sleepController.ToggleSleep();
         }
 
         public override void TogglePower()

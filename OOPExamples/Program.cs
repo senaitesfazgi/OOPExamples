@@ -7,7 +7,7 @@ namespace OOPExamples
         static void Main(string[] args)
         {
             var comp = new Desktop("Generic Computer", Desktop.CaseType.Tower);
-           // var comp = new Laptop("Generc laptop", 1024, 768)
+            //var comp = new Laptop("Generc laptop", 1024, 768)
             Console.WriteLine("Computer type: " + comp.name);
             //Console.WriteLine("Computer Case Type: " + comp.caseType);
             Console.WriteLine(comp.GetType());
