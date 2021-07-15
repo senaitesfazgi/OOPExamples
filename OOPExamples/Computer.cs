@@ -10,13 +10,41 @@ namespace OOPExamples
     {
         protected string _name = "UNKNOWN";
 
-        public string name { 
+        public virtual string name { 
             get {
                 return _name;
             } 
 
-            set {
+            private set {
                 _name = value;
+            }
+        }
+
+        public bool  isOn { get; private set; }
+
+        public Computer(string name)
+        {
+            this.name = name;
+        }
+
+        protected void TurnOn()
+        {
+            isOn = true;
+        }
+        protected void TurnOff()
+        {
+            isOn = false;
+        }
+
+        public virtual void TogglePower()
+        {
+            if (isOn)
+            {
+                TurnOff();
+            }
+            else
+            {
+                TurnOn();
             }
         }
     }
