@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace OOPExamples
 {
-    class Computer
+    class Computer : IPowerOn
     {
+        protected IPowerOn powerController;
         protected string _name = "UNKNOWN";
 
         public virtual string name { 
@@ -20,32 +21,23 @@ namespace OOPExamples
             }
         }
 
-        public bool  isOn { get; private set; }
+        public bool  isOn 
+        { 
+            get 
+            { 
+                return powerController.isOn; 
+            } 
+        }
 
         public Computer(string name)
         {
             this.name = name;
-        }
-
-        protected void TurnOn()
-        {
-            isOn = true;
-        }
-        protected void TurnOff()
-        {
-            isOn = false;
+            powerController = new PowerController();
         }
 
         public virtual void TogglePower()
         {
-            if (isOn)
-            {
-                TurnOff();
-            }
-            else
-            {
-                TurnOn();
-            }
+            powerController.TogglePower();
         }
     }
 }
